@@ -10,10 +10,10 @@ class Service extends Model
         'airtable_id'
     ];
 
-    public function addresses()
+    /*public function addresses()
     {
         return $this->belongsToMany('App\Address', )
-    }
+    }*/
     
     public function taxonomies()
     {

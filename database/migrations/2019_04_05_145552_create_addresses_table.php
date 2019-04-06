@@ -21,13 +21,6 @@ class CreateAddressesTable extends Migration
             $table->string('airtable_id');
 
             $table->timestamps();
-
-            
-            comments
-            id - integer
-            body - text
-            commentable_id - integer
-            commentable_type - string
         });
     }
 

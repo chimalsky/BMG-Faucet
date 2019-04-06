@@ -46,6 +46,6 @@ class Taxonomy extends Model
 
     public function scopeKeystone($query)
     {
-        return $query->doesnthave('parents');
+        return $query->where(name);
     }
 }

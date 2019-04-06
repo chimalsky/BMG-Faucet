@@ -20,7 +20,7 @@ class TaxonomyController extends Controller
      */
     public function dataSync()
     {
-        $this->dispatchNow(new ServiceSync());
+        //$this->dispatchNow(new ServiceSync());
         $this->dispatchNow(new TaxonomySync());
 
     }

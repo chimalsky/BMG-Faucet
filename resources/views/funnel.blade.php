@@ -108,9 +108,9 @@
     </p>
 
     <p class="cell">
-        Based on our interviews we have come up mocked up designs. To 
+        Based on our interviews we have mocked up designs. To 
         make these designs a reality, we've started on a Laravel (PHP) 
-        OpenReferral Boilerplate, which syncs with the City's Airtable,
+        OpenReferral Boilerplate that syncs with the City's Airtable,
         and pulls it into a database.
     </p>
 

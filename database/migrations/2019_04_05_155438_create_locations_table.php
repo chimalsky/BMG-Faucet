@@ -31,7 +31,7 @@ class CreateLocationsTable extends Migration
                 ->on('addresses')
                 ->nullable();
 
-            $table->string('flag', 45)->nullable();
+            $table->string('flag')->nullable();
 
             $table->string('airtable_id');
 

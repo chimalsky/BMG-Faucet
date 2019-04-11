@@ -51,7 +51,6 @@ class ServiceSync extends AirtableSync
 
             if ($organizations = count($field->organization)) {
                 foreach ($organizations as $orgFields) {
-                    dd($orgFields);
                     $organization = new Organization;
 
                     $organization->airtable_id = $orgFields->id;
@@ -130,7 +129,24 @@ class ServiceSync extends AirtableSync
                 $organization = Organization::firstOrNew(['airtable_id' => $recordId]);
                 $organization->save();
                 
-                if ($service->organizations()->where('organization_id', $organization->id)->exists()) {
+                if ($service->organizations()->where('organization_id', $organization->id)
+                    ->where('service_id', $service->id)
+                    ->exists()) {
+                    continue;
+                }
+
+                $service->organizations()->attach($organization);
+            }
+        }
+
+        if (key_exists('address', $fields) && count($fields->address)) {
+            foreach ($fields->address as $recordId) {
+                $address = Address::firstOrNew(['airtable_id' => $recordId]);
+                $address->save();
+                
+                if ($address->services()->where('address_id', $address->id)
+                    ->where('service_id', $service->id)
+                    ->exists()) {
                     continue;
                 }
 

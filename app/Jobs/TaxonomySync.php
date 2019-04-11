@@ -50,7 +50,7 @@ class TaxonomySync extends AirtableSync
         $taxonomy->save();
 
         if (key_exists('parent_name', $fields)) {
-            $recordId = $fields->parent_name;
+            $recordId = $fields->parent_name[0];
             $parent = Taxonomy::firstOrNew(['airtable_id' => $recordId]);
             $parent->save();
 

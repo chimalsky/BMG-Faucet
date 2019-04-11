@@ -44,8 +44,4 @@ class Taxonomy extends Model
         return $childrenServices->merge($services);
     }
 
-    public function scopeKeystone($query)
-    {
-        return $query->where(name);
-    }
 }

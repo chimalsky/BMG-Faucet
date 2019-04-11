@@ -2,24 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Service;
-use App\Taxonomy;
-
+use App\Organization;
 use Illuminate\Http\Request;
 
-class TaxonomyController extends Controller
+class OrganizationController extends Controller
 {
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function dataSync()
-    {
-
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -27,12 +14,7 @@ class TaxonomyController extends Controller
      */
     public function index()
     {
-        $taxonomies = Taxonomy::all();
-        $taxonomies = $taxonomies->filter(function($t) {
-            return $t->parents->count() == 0;
-        });
-        
-        return view('home', compact('taxonomies'));
+        //
     }
 
     /**
@@ -64,12 +46,9 @@ class TaxonomyController extends Controller
      */
     public function show($id)
     {
-        $taxonomy = Taxonomy::find($id);
-        $services = $taxonomy->serviceLineage;
-        $childrenTaxonomies = $taxonomy->children()->with('services')->get();
-        //$services = $taxonomy->services;
+        $organization = Organization::findOrFail($id);
 
-        return view('taxonomy.show', compact('taxonomy', 'childrenTaxonomies', 'services'));
+        return view('organization.show', compact('organization'));
     }
 
     /**

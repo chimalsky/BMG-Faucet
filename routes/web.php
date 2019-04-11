@@ -18,8 +18,8 @@ Route::get('/', function() {
 Route::prefix('preview')->group(function() {
     Route::get('/', 'TaxonomyController@index')->name('home');
     Route::get('/taxonomy/{taxonomy_id}', 'TaxonomyController@show')->name('taxonomy.show');
+    Route::get('/organization/{organization_id}', 'OrganizationController@show')->name('organization.show');
 
-    Route::get('/datasync', 'TaxonomyController@datasync');
-
+    Route::get('/datasync', 'AirtableSyncController@index');
 });
 
